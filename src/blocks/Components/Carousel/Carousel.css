@@ -1,0 +1,230 @@
+/*
+	Installed from https://reactbits.dev/ts/default/
+*/
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #555;
+  border-radius: 24px;
+  padding: 16px;
+  --outer-r: 24px;
+  --p-distance: 12px;
+}
+
+.carousel-track {
+  display: flex;
+}
+
+.carousel-item {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid #555;
+  border-radius: calc(var(--outer-r) - var(--p-distance));
+  background-color: #0D0D0D;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.carousel-item:active {
+  cursor: grabbing;
+}
+
+.carousel-container.round {
+  border: 1px solid #555;
+}
+
+.carousel-item.round {
+  background-color: #0D0D0D;
+  position: relative;
+  bottom: .1em;
+  border: 1px solid #555;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-item-header.round {
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-indicators-container.round {
+  position: absolute;
+  z-index: 2;
+  bottom: 3em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-indicator.active {
+  background-color: #333333;
+}
+
+.carousel-indicator.inactive {
+  background-color: rgba(51, 51, 51, 0.4);
+}
+
+.carousel-item-header {
+  padding: 0;
+  padding-top: 0;
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
+
+.carousel-icon-container {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.carousel-icon {
+  height: 16px;
+  width: 16px;
+  color: #060010;
+}
+
+.carousel-image {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.carousel-item-content {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.carousel-item-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.carousel-item-description {
+  font-size: 0.875rem;
+  color: #999;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.carousel-indicators-container {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-indicator.active {
+  background-color: #333333;
+}
+
+.carousel-indicator.inactive {
+  background-color: rgba(51, 51, 51, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Header menor, abre espaço pro texto */
+
+  /* Aproxima as bolinhas do cartão */
+  .carousel-container {
+    padding-bottom: 8px; 
+  }
+  .carousel-indicators-container {
+    bottom: 8px; 
+  }
+
+  /* Bolinhas menores e gap reduzido */
+  .carousel-indicators {
+    gap: 6px; 
+  }
+  .carousel-indicator {
+    width: 6px !important;  
+    height: 6px !important; 
+  }
+
+  /* Garante que a descrição apareça */
+  .carousel-item-description {
+    display: block !important;
+  }
+
+  /* Espaçamento interno e externo do texto */
+  .carousel-item-content {
+    padding: 8px !important;  
+  }
+  .carousel-item-description {
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+    font-size: 0.75rem !important; /* opcional */
+  }
+}
+
+@media (max-width: 480px) {
+  /* 1) Header menor para liberar espaço pro texto */
+
+  .carousel-item{
+    height: 200px;
+  }
+
+  /* 2) Aproxima as bolinhas do item */
+  .carousel-container {
+    padding-bottom: 8px !important; 
+  }
+  .carousel-indicators-container {
+    bottom: 8px !important; 
+  }
+
+  /* 3) Bolinhas menores e com gap reduzido */
+  .carousel-indicators {
+    gap: 6px !important;
+  }
+  .carousel-indicator {
+    width: 6px !important; 
+    height: 6px !important;
+  }
+
+  /* 4) Garante que a descrição apareça e tenha mais folga */
+  .carousel-item-content {
+    padding-top: 2px !important;
+    padding-left: 8px !important;  /* menos “aperto” interno */
+  }
+  
+  .carousel-item-description {
+    display: block !important;
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;  /* mais “respiro” vertical */
+  }
+}
