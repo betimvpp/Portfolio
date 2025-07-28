@@ -3,7 +3,7 @@
 */
 
 import { useEffect, useState, useRef } from "react";
-import { motion, type PanInfo, useMotionValue, useTransform } from "framer-motion";
+import { motion, type PanInfo, useMotionValue } from "framer-motion";
 import "./Carousel.css";
 
 export interface CarouselItem {
@@ -56,7 +56,6 @@ const DEFAULT_ITEMS: CarouselItem[] = [
   },
 ];
 
-const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
 const SPRING_OPTIONS = { type: "spring" as const, stiffness: 300, damping: 30 };
@@ -174,13 +173,7 @@ export default function Carousel({
     setCurrentIndex(index);
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => Math.min(items.length - 1, prevIndex + 1));
-  };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => Math.max(0, prevIndex - 1));
-  };
 
   return (
     <div
